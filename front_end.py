@@ -6,6 +6,10 @@ import torch
 import torchvision
 from torchvision import transforms
 from skimage import color
+import os
+
+# Define the images directory
+images_dir = "./images"
 
 # Function to calculate the color histogram for an uploaded image
 def calculate_histogram(image):
@@ -87,6 +91,6 @@ if uploaded_file:
             for col in range(cols_per_row):
                 index = row * cols_per_row + col
                 if index < num_results:
-                    cols[col].image(Image.open("./images/" + names[top_n[index]]))
+                    cols[col].image(Image.open(os.path.join(images_dir, names[top_n[index]])))
 else:
     st.write("Please upload an image to start.")

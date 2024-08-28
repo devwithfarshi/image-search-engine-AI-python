@@ -7,10 +7,10 @@ from torchvision import transforms
 from skimage import color
 
 # Directory containing images
-image_dir = "./images"
+images_dir = "./images"
 
 # List of image filenames
-images = os.listdir(image_dir)
+images = os.listdir(images_dir)
 
 # Load the ResNet18 model with default pre-trained weights
 model = torchvision.models.resnet18(weights=torchvision.models.ResNet18_Weights.DEFAULT)
@@ -46,7 +46,7 @@ all_histograms = []
 with torch.no_grad():
     for i, file in enumerate(images):
         try:
-            img_path = os.path.join(image_dir, file)
+            img_path = os.path.join(images_dir, file)
             img = Image.open(img_path)
             img = img.convert("RGB")  # Ensure image is in RGB format
 
